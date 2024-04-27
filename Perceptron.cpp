@@ -4,11 +4,8 @@
 #include <ctime>
 
 Perceptron::Perceptron(int num_inputs, double learning_rate): learning_rate{learning_rate}{
-    srand(time(NULL));
-
     for(size_t i{}; i < num_inputs; ++i){
-        // double weight = rng.getRandomDouble(-1, 1);
-        double weight = (rand() / double(RAND_MAX)) * 2 - 1;
+        double weight = rng.getRandomDouble(-1, 1);
         weights.push_back(weight);
     }
 
@@ -17,7 +14,6 @@ Perceptron::Perceptron(int num_inputs, double learning_rate): learning_rate{lear
 
 int Perceptron::activate(double sum){
     return sum > 0 ? 1:0;
-    // return 1 / (1 + exp(-sum));
 }
 
 int Perceptron::feedForward(const std::vector<double>& inputs){
